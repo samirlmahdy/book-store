@@ -6,7 +6,7 @@ const bookClient = new PrismaClient().book;
 
 export const getBooks = async (req, res) => {
   try {
-    const books = await bookClient.findMany();
+    const books = await bookClient.findMany({ include: { serial: true } });
     res.status(200).json(books);
   } catch (error) {
     console.log(error);

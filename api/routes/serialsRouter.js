@@ -1,8 +1,14 @@
 import express from "express";
-import { getSerials } from "../controllers/serialsController";
+import {
+  createSerials,
+  getAllSerials,
+  updateSerial,
+} from "../controllers/serialsController.js";
 
 const serialRouter = express.Router();
 
-serialRouter.get("/", getSerials);
+serialRouter.get("/", getAllSerials);
+serialRouter.post("/", createSerials);
+serialRouter.patch("/", updateSerial);
 
 export default serialRouter;

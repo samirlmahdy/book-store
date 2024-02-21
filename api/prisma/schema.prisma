@@ -21,8 +21,14 @@ model Book {
 
 model Serial {
   id          Int     @id @default(autoincrement())
-  book_serial String
+  book_serial String  @unique
   Book        Book?   @relation(fields: [bookId], references: [id])
   bookId      Int?
   isUsed      Boolean @default(false)
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String
+  role     String @default("Admin")
 }
