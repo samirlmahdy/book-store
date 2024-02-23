@@ -13,6 +13,24 @@ export const getBooks = async (req, res) => {
   }
 };
 
+// get books by name
+
+export const getBooksByName = async (req, res) => {
+  const bookName = req.params.bookName;
+  try {
+    const books = await bookClient.findMany({
+      where: {
+        book_name: {
+          startsWith: bookName,
+        },
+      },
+    });
+    if (!books) return res.status();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // create a new Book
 
 export const createBook = async (req, res) => {

@@ -39,7 +39,7 @@ export const createSerials = async (req, res) => {
 
 // use Serial Number
 
-export const updateSerial = async (req, res) => {
+export const useSerial = async (req, res) => {
   const { serial } = req.body;
   // const { book_id } = req.body;
 
@@ -59,6 +59,22 @@ export const updateSerial = async (req, res) => {
       data: usedSerial,
     });
     res.status(200).json(usedSerial);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// delete Serial Number
+
+export const deleteSerial = async (req, res) => {
+  const serial_id = req.params.id;
+  try {
+    const serial = await serialClient.delete({
+      where: {
+        id: serial_id,
+      },
+    });
+    res.status(200).json({ message: "Serial number has been deleted", serial });
   } catch (error) {
     console.log(error);
   }

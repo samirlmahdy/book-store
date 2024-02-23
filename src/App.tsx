@@ -1,15 +1,15 @@
 import "./App.css";
-import AddBook from "./components/AddBook";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
+
+const routes = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "dashboard", element: <Dashboard /> },
+]);
 
 function App() {
-  return (
-    <main className="App">
-      <div className="App">
-        <h1>Book Store</h1>
-        <AddBook />
-      </div>
-    </main>
-  );
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
