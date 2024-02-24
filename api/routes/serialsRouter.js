@@ -1,10 +1,10 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   createSerials,
   getAllSerials,
   useSerial,
   deleteSerial,
-} from "../controllers/serialsController.js";
+} = require("../controllers/serialsController.js");
 
 const serialRouter = express.Router();
 
@@ -13,4 +13,4 @@ serialRouter.post("/", createSerials);
 serialRouter.patch("/", useSerial);
 serialRouter.delete("/:id", deleteSerial);
 
-export default serialRouter;
+module.exports = serialRouter;

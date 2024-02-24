@@ -2,6 +2,7 @@ export type Book = {
   id: number;
   book_name: string;
   serial: Serial[];
+  bookURL: string;
 };
 
 export type Serial = {

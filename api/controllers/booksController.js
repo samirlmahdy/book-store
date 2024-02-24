@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
 const bookClient = new PrismaClient().book;
 
 // Get all books from db
 
-export const getBooks = async (req, res) => {
+const getBooks = async (req, res) => {
   try {
     const books = await bookClient.findMany({ include: { serial: true } });
     res.status(200).json(books);
@@ -15,7 +15,7 @@ export const getBooks = async (req, res) => {
 
 // get books by name
 
-export const getBooksByName = async (req, res) => {
+const getBooksByName = async (req, res) => {
   const bookName = req.params.bookName;
   try {
     const books = await bookClient.findMany({
@@ -33,7 +33,7 @@ export const getBooksByName = async (req, res) => {
 
 // create a new Book
 
-export const createBook = async (req, res) => {
+const createBook = async (req, res) => {
   const book = req.body;
   try {
     await bookClient.create({ data: book });
@@ -45,8 +45,8 @@ export const createBook = async (req, res) => {
 
 // get book by Id
 
-export const getBookById = async (req, res) => {
-  const bookId = req.params.id;
+const getBookById = async (req, res) => {
+  const bookId = JSON.parse(req.params.id);
 
   try {
     const book = await bookClient.findUnique({
@@ -65,7 +65,7 @@ export const getBookById = async (req, res) => {
 
 // Edit book by id
 
-export const updateBook = async (req, res) => {
+const updateBook = async (req, res) => {
   const bookId = req.params.id;
   const bookData = req.body;
   try {
@@ -84,7 +84,7 @@ export const updateBook = async (req, res) => {
 
 // Delete book
 
-export const deleteBook = async (req, res) => {
+const deleteBook = async (req, res) => {
   const bookId = req.params.id;
   try {
     const book = await bookClient.delete({
@@ -96,4 +96,13 @@ export const deleteBook = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+module.exports = {
+  getBooks,
+  createBook,
+  updateBook,
+  deleteBook,
+  getBookById,
+  getBooksByName,
 };

@@ -1,11 +1,11 @@
-import { nanoid } from "nanoid";
-import { PrismaClient } from "@prisma/client";
+const nanoid = require("nanoid");
+const { PrismaClient } = require("@prisma/client");
 
 const serialClient = new PrismaClient().serial;
 
 // get all serials
 
-export const getAllSerials = async (req, res) => {
+const getAllSerials = async (req, res) => {
   try {
     const serials = await serialClient.findMany({ include: { Book: true } });
     res.status(200).json(serials);
@@ -16,7 +16,7 @@ export const getAllSerials = async (req, res) => {
 
 // create serials related to book
 
-export const createSerials = async (req, res) => {
+const createSerials = async (req, res) => {
   const { serialsCount } = req.body;
   const { book_id } = req.body;
 
@@ -39,7 +39,7 @@ export const createSerials = async (req, res) => {
 
 // use Serial Number
 
-export const useSerial = async (req, res) => {
+const useSerial = async (req, res) => {
   const { serial } = req.body;
   // const { book_id } = req.body;
 
@@ -66,7 +66,7 @@ export const useSerial = async (req, res) => {
 
 // delete Serial Number
 
-export const deleteSerial = async (req, res) => {
+const deleteSerial = async (req, res) => {
   const serial_id = req.params.id;
   try {
     const serial = await serialClient.delete({
@@ -79,3 +79,5 @@ export const deleteSerial = async (req, res) => {
     console.log(error);
   }
 };
+
+module.exports = { createSerials, getAllSerials, useSerial, deleteSerial };

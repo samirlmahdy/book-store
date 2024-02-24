@@ -24,6 +24,7 @@ model Serial {
   book_serial String  @unique
   Book        Book?   @relation(fields: [bookId], references: [id])
   bookId      Int?
+  bookURL     String
   isUsed      Boolean @default(false)
 }
 
