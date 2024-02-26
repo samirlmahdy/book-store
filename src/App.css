@@ -50,3 +50,32 @@ body {
   color: white;
   background-color: var(--primary-color);
 }
+
+.books {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: antiquewhite;
+}
+
+.books h2 {
+  color: blue;
+}
+
+.books h4 {
+  color: red;
+}
+
+.serials {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serial {
+  background-color: rgb(70, 70, 158);
+  color: white;
+  max-width: 200px;
+}

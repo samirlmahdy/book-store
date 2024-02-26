@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const { json } = require("express");
 
 const bookClient = new PrismaClient().book;
 
@@ -7,7 +8,7 @@ const bookClient = new PrismaClient().book;
 const getBooks = async (req, res) => {
   try {
     const books = await bookClient.findMany({ include: { serial: true } });
-    res.status(200).json(books);
+    return res.status(200).json(books);
   } catch (error) {
     console.log(error);
   }
@@ -16,16 +17,20 @@ const getBooks = async (req, res) => {
 // get books by name
 
 const getBooksByName = async (req, res) => {
-  const bookName = req.params.bookName;
+  const { bookName } = req.params;
   try {
     const books = await bookClient.findMany({
       where: {
         book_name: {
-          startsWith: bookName,
+          contains: bookName || bookName.toLowerCase(),
         },
       },
     });
-    if (!books) return res.status();
+    if (!books)
+      return res.status(404).json({
+        message: "The requested book hasn't been added yet to the library.",
+      });
+    return res.status(200).json({ books });
   } catch (error) {
     console.log(error);
   }
@@ -37,7 +42,7 @@ const createBook = async (req, res) => {
   const book = req.body;
   try {
     await bookClient.create({ data: book });
-    res.sendStatus(201).json(book);
+    return res.status(201).json(book);
   } catch (error) {
     console.log(error);
   }
@@ -46,15 +51,15 @@ const createBook = async (req, res) => {
 // get book by Id
 
 const getBookById = async (req, res) => {
-  const bookId = JSON.parse(req.params.id);
+  const book_id = JSON.parse(req.params.id);
 
   try {
     const book = await bookClient.findUnique({
       where: {
-        id: bookId,
+        id: book_id,
       },
       include: {
-        Author: true,
+        serial: true,
       },
     });
     res.status(200).json({ data: book });

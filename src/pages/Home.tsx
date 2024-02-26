@@ -1,24 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Book } from "../types";
+import useFetch from "../hooks/useFetch";
+import Search from "../components/Search";
+import BooksList from "../components/BooksList";
 
 const Home = () => {
-  const [books, setBooks] = useState<Book[] | any>([]);
+  const [query, setQuery] = useState("");
+  const booksEndPoint = `http://localhost:3030/books`;
 
-  useEffect(() => {
-    const getAllBooks = async () => {
-      const response = await fetch("http://localhost:3030/books");
-      const data = await response.json();
-      setBooks(data);
-    };
-    getAllBooks();
-  }, [books]);
+  const { data, loading, error } = useFetch<Book[]>(booksEndPoint);
 
+  const books = data?.filter((book) =>
+    book.book_name.toLowerCase().includes(query.toLocaleLowerCase())
+  );
+
+  if (error) return <div className="error">{error}</div>;
+
+  if (loading) return <div className="loading">Loading...</div>;
+
+  if (!books) return <div>Kindly Add a book...</div>;
   return (
-    <div>
-      <h3>Books</h3>
-      {books.map((book: Book) => {
-        return <h4 key={book.id}>{book.book_name}</h4>;
-      })}
+    <div className="books">
+      <h2>Welcome to Books Library</h2>
+      <Search
+        query={query}
+        setQuery={setQuery}
+      />
+      <BooksList books={books} />
     </div>
   );
 };

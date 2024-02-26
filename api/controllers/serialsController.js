@@ -1,4 +1,4 @@
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 const { PrismaClient } = require("@prisma/client");
 
 const serialClient = new PrismaClient().serial;
