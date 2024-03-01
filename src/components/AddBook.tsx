@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { TextField } from "@mui/material";
 
 const AddBook = () => {
   const [book, setBook] = useState("");
@@ -53,10 +54,18 @@ const AddBook = () => {
           ref={fileInputRef}
         />
         <label htmlFor="book_name">Book Name</label>
-        <input
+        {/* <input
           onChange={booknameChangeHandler}
           type="text"
           name="book_name"
+        /> */}
+        <TextField
+          id="filled-search"
+          label="Search field"
+          type="search"
+          variant="filled"
+          name="book_name"
+          onChange={booknameChangeHandler}
         />
 
         <input

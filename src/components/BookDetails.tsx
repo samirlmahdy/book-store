@@ -29,6 +29,7 @@ const BookDetails = ({ book }: { book: Book }) => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <div className="serials">

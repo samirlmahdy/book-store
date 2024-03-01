@@ -14,18 +14,20 @@ datasource db {
 }
 
 model Book {
-  id        Int      @id @default(autoincrement())
-  book_name String
-  serial    Serial[]
+  id              Int      @id @default(autoincrement())
+  book_name       String
+  bookURL         String
+  book_drive_name String
+  serial          Serial[]
 }
 
 model Serial {
-  id          Int     @id @default(autoincrement())
-  book_serial String  @unique
-  Book        Book?   @relation(fields: [bookId], references: [id])
+  id          Int    @id @default(autoincrement())
+  book_serial String @unique
+  Book        Book?  @relation(fields: [bookId], references: [id])
   bookId      Int?
-  bookURL     String
-  isUsed      Boolean @default(false)
+
+  isUsed Boolean @default(false)
 }
 
 model User {

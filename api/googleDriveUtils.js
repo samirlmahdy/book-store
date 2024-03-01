@@ -17,7 +17,6 @@ function getRefreshToken() {
     process.env.CLIENT_SECRET,
     process.env.REDIRECT_URI
   );
-  console.log(oauth2Client);
   return oauth2Client;
 }
 getRefreshToken();
@@ -43,7 +42,6 @@ async function uploadFile(path) {
         body: fs.createReadStream(path),
       },
     });
-    console.log(response.data);
   } catch (error) {
     console.log(error.message);
   }
@@ -64,27 +62,27 @@ async function deleteFile() {
 
 // deleteFile();
 
-async function generatePublicUrl() {
-  try {
-    const fileId = "YOUR FILE ID";
-    await drive.permissions.create({
-      fileId: fileId,
-      requestBody: {
-        role: "reader",
-        type: "anyone",
-      },
-    });
+// async function generatePublicUrl() {
+//   try {
+//     const fileId = "YOUR FILE ID";
+//     await drive.permissions.create({
+//       fileId: fileId,
+//       requestBody: {
+//         role: "reader",
+//         type: "anyone",
+//       },
+//     });
 
-    /*
-    webViewLink: View the file in browser
-    webContentLink: Direct download link
-    */
-    const result = await drive.files.get({
-      fileId: fileId,
-      fields: "webViewLink, webContentLink",
-    });
-    console.log(result.data);
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+//     /*
+//     webViewLink: View the file in browser
+//     webContentLink: Direct download link
+//     */
+//     const result = await drive.files.get({
+//       fileId: fileId,
+//       fields: "webViewLink, webContentLink",
+//     });
+//     console.log(result.data);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }

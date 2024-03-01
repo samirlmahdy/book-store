@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "create": "prisma dev --create-only"
   },
   "keywords": [],
   "author": "",

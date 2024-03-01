@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useRef } from "react";
+import { TextField } from "@mui/material";
 
 type SearchProps = {
   query: string;
@@ -7,9 +7,14 @@ type SearchProps = {
 
 const Search = ({ query, setQuery }: SearchProps) => {
   return (
-    <div>
-      <input
+    <div className="search-box">
+      <TextField
         autoFocus
+        className="book-search"
+        id="filled-search"
+        label="Search for a Book"
+        type="search"
+        variant="filled"
         name="query"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
