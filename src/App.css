@@ -4,7 +4,10 @@
 @import "@fontsource/roboto/700.css";
 
 :root {
-  --primary-color: rgb(4, 65, 65);
+  --primary-color: #6c5f5b;
+  --primary-dark: #4f4a45;
+  --secondary-color: #f6f1ee;
+  --secondary-color-orange: #ed7d31;
 }
 
 * {
@@ -21,12 +24,14 @@ body {
   max-width: 1440px;
   font-family: "Roboto";
   font-size: 1.5rem;
+  background-color: var(--secondary-color);
 }
 
 .search-box {
   margin: 20px auto;
   text-align: center;
   border-radius: 20px;
+  width: 100%;
 }
 
 .book-search {
@@ -36,6 +41,7 @@ body {
 
 .books h1 {
   font-size: xx-large;
+  color: var(--primary-dark);
 }
 
 .books-list {
@@ -49,10 +55,15 @@ body {
 .book-card {
   padding: 10px;
   max-width: 30rem;
-  min-width: 25rem;
+  min-width: 30rem;
   border-radius: 8px;
-  background: #acacac;
+  background-color: #c3c2c2;
   text-align: center;
+}
+
+.card-heading {
+  background-color: var(--primary-dark);
+  color: white;
 }
 
 .card-link {
@@ -64,6 +75,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .serial-usage p {
@@ -71,17 +83,98 @@ body {
   font-size: 1.75rem;
 }
 
-.serial-usage p:first-of-type {
-  color: green;
+.serial-usage p.used {
+  background-color: green;
 }
-.serial-usage p:last-of-type {
-  color: red;
+.serial-usage p.un-used {
+  background-color: red;
+}
+
+.serial-usage p {
+  color: white;
+  padding: 5px;
 }
 
 .error {
   font-size: 1.75rem;
   font-weight: 500;
   color: red;
+}
+
+.book-page {
+  width: 100%;
+  background-color: #c3c2c2;
+}
+
+.book-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.book-subheading {
+  font-size: 3rem;
+  color: var(--primary-dark);
+}
+
+.serial-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.serial-serial {
+  background-color: var(--primary-dark);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.serial-number {
+  font-size: 2rem;
+  padding: 2rem;
+  background-color: #c3c2c2;
+  margin: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 24rem;
+}
+
+.books-graph {
+  width: 100%;
+}
+.css-1cj1zx6-MuiResponsiveChart-container {
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Add your CSS rules for this breakpoint */
+  .book-card {
+    min-width: 100%;
+  }
+  .serial-number {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) {
+  /* Add your CSS rules for this breakpoint */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  /* Add your CSS rules for this breakpoint */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* Add your CSS rules for this breakpoint */
 }
 
 /* .App {

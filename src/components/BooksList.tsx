@@ -3,30 +3,33 @@ import useFetch from "../hooks/useFetch";
 import { Book } from "../types";
 import BookComponent from "./BookComponent";
 import BooksSkeleton from "./BooksSkeleton";
+import { book } from "../_data";
 
 const BooksList = ({ query }: { query: string }) => {
-  const booksEndPoint = `http://localhost:3030/books`;
+  // const booksEndPoint = `${process.env.API_ENDPOINT}/books`;
 
-  const { data, loading, error } = useFetch<Book[]>(booksEndPoint);
+  // const { data, loading, error } = useFetch<Book[]>(booksEndPoint);
 
-  const books = data?.filter((book) =>
-    book.book_name.toLowerCase().includes(query.toLocaleLowerCase())
-  );
+  // const books = data?.filter((book) =>
+  //   book.book_name.toLowerCase().includes(query.toLocaleLowerCase())
+  // );
 
-  if (loading)
-    return (
-      <Box className="books-list">
-        <BooksSkeleton />
-      </Box>
-    );
+  // if (loading)
+  //   return (
+  //     <Box className="books-list">
+  //       <BooksSkeleton />
+  //     </Box>
+  //   );
 
-  if (error) {
-    return (
-      <Box className="books-list">
-        <p className="error">{error}</p>;
-      </Box>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <Box className="books-list">
+  //       <p className="error">{error}</p>;
+  //     </Box>
+  //   );
+  // }
+
+  const books = book;
 
   if (books?.length === 0) {
     return (

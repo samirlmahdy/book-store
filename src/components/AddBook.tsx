@@ -17,17 +17,20 @@ const AddBook = () => {
       for (let i = 0; i < files.length; i++) {
         formData.append("files", files[i]);
         try {
-          const response = await fetch("http://localhost:3030/upload", {
+          const response = await fetch(`${process.env.API_ENDPOINT}/upload`, {
             method: "POST",
             body: formData,
           });
-          const bookResponse = await fetch("http://localhost:3030/books", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ book_name: book }),
-          });
+          const bookResponse = await fetch(
+            `${process.env.API_ENDPOINT}/books`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ book_name: book }),
+            }
+          );
 
           const data = await response.json();
           const bookData = await bookResponse.json();

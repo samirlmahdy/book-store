@@ -10,26 +10,23 @@ const BookComponent = ({ book }: { book: Book }) => {
   ).length;
 
   return (
-    <Card
-      className="book-card"
-      component="span"
-    >
+    <div className="book-card">
       <Link
         className="card-link"
         to={`/books/id`}
       >
-        <Box
+        <div
           className="book"
           key={book.id}
         >
           <h3 className="card-heading">{book.book_name}</h3>
           <Box className="serial-usage">
-            <p>Used: {usedSerialNumbers}</p>
-            <p>Unused: {unUsedSerialNumbers}</p>
+            <p className="used">Used: {usedSerialNumbers}</p>
+            <p className="un-used">Unused: {unUsedSerialNumbers}</p>
           </Box>
-        </Box>
+        </div>
       </Link>
-    </Card>
+    </div>
   );
 };
 export default BookComponent;

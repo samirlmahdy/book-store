@@ -13,7 +13,7 @@ const BookDetails = ({ book }: { book: Book }) => {
 
   const handleCreateSerils = async () => {
     try {
-      const response = await fetch("http://localhost:3030/serials", {
+      const response = await fetch(`${process.env.API_ENDPOINT}/serials`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
