@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material";
+import { Box } from "@mui/material";
 import { Book } from "../types";
 import { Link } from "react-router-dom";
 

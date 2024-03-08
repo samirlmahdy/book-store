@@ -16,6 +16,10 @@ const Search = ({ query, setQuery }: SearchProps) => {
         type="search"
         variant="filled"
         name="query"
+        InputProps={{
+          sx: { fontSize: "18px" }, // Adjust placeholder font size
+        }}
+        InputLabelProps={{ sx: { fontSize: "18px" } }}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

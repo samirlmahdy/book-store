@@ -154,7 +154,9 @@ body {
 
 @media only screen and (max-width: 600px) {
   /* Add your CSS rules for this breakpoint */
-  .book-card {
+
+  .add-book-container div,
+  .add-book {
     min-width: 100%;
   }
   .serial-number {
@@ -163,18 +165,62 @@ body {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 601px) {
+@media only screen and (max-width: 601px) {
   /* Add your CSS rules for this breakpoint */
+  .book-card,
+  .add-book-container div,
+  .add-book {
+    min-width: 100%;
+  }
+  .serial-number {
+    width: 80%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   /* Add your CSS rules for this breakpoint */
+  .book-card,
+  .add-book-container div,
+  .add-book {
+    min-width: 100%;
+  }
+  .serial-number {
+    width: 100%;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   /* Add your CSS rules for this breakpoint */
+}
+
+main.add-book-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.add-book-container-div {
+  width: 100%;
+}
+
+.add-book form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.action-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-book-container-div h1 {
+  font-weight: 500;
+  font-size: 3rem;
+  color: var(--primary-dark);
 }
 
 /* .App {

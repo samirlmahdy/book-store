@@ -2,31 +2,29 @@ import { Box, Typography } from "@mui/material";
 import { book } from "../_data";
 // import { useParams } from "react-router-dom";
 // import useFetch from "../hooks/useFetch";
-import { Book } from "../types";
-import BooksPieChart from "../components/BooksPieChart";
-import { ResponsiveChartContainer } from "@mui/x-charts";
+// import { Book } from "../types";
 // import BooksSkeleton from "../components/BooksSkeleton";
 
 const BookPage = () => {
   //   const { id } = useParams();
   //   const booksEndPoint = `${process.env.API_ENDPOINT}/books/${id}`;
   //   const { data: book, loading, error } = useFetch<Book | null>(booksEndPoint);
-  const usedSerialNumbers = book[0].serial.filter(
-    (s) => s.isUsed === true
-  ).length;
-  const unUsedSerialNumbers = book[0].serial.filter(
-    (s) => s.isUsed === false
-  ).length;
+  // const usedSerialNumbers = book[0].serial.filter(
+  //   (s) => s.isUsed === true
+  // ).length;
+  // const unUsedSerialNumbers = book[0].serial.filter(
+  //   (s) => s.isUsed === false
+  // ).length;
 
-  const series = [
-    {
-      data: [
-        { id: 0, label: "Used Serials", value: usedSerialNumbers },
-        ,
-        { id: 1, label: "Unused Serials", value: unUsedSerialNumbers },
-      ],
-    },
-  ];
+  // const series = [
+  //   {
+  //     data: [
+  //       { id: 0, label: "Used Serials", value: usedSerialNumbers },
+  //       ,
+  //       { id: 1, label: "Unused Serials", value: unUsedSerialNumbers },
+  //     ],
+  //   },
+  // ];
 
   //   if (loading)
   //     return (

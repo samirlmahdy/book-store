@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-import { ResponsiveChartContainer } from "@mui/x-charts";
 import { PieChart } from "@mui/x-charts/PieChart";
 
 const BooksPieChart = ({ series }: any) => {
